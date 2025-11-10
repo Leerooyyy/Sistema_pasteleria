@@ -85,15 +85,16 @@ WSGI_APPLICATION = 'pasteleria.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 # Base de datos por defecto (local, por si acaso)
+# Configuración de base de datos para producción (Railway) y local
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('PGDATABASE', 'pasteleria_db'),
-        'USER': os.environ.get('PGUSER', 'pasteleria_user'),
-        'PASSWORD': os.environ.get('PGPASSWORD', 'Foderingham507'),
-        'HOST': os.environ.get('PGHOST', 'localhost'),
-        'PORT': os.environ.get('PGPORT', '5432'),
-    }
+    'default': dj_database_url.config(
+        # Railway pondrá DATABASE_URL; si no existe, usamos valores locales para desarrollo
+        default=os.environ.get(
+            'DATABASE_URL',
+            'postgres://pasteleria_user:Foderingham507@localhost:5432/pasteleria_db'
+        ),
+        conn_max_age=600,
+    )
 }
 
 # Si Railway nos da DATABASE_URL, usamos eso
