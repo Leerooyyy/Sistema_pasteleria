@@ -27,8 +27,15 @@ SECRET_KEY = 'django-insecure-f4q&%&&2c2u7w*fq4d#g&gmyx%j%_$&yxl5hb8jf#e8f%($c$7
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'dulzurasdebelgis.onrender.com',
+]
+
+
 
 
 # Application definition
