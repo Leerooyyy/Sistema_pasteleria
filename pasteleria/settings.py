@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,14 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-f4q&%&&2c2u7w*fq4d#g&gmyx%j%_$&yxl5hb8jf#e8f%($c$7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'dulzurasdebelgis.onrender.com',
-]
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 
 
@@ -86,11 +82,10 @@ WSGI_APPLICATION = 'pasteleria.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Base de datos por defecto (local, por si acaso)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-
-        # En Render usará las variables de entorno PG*, en local usará los defaults
         'NAME': os.environ.get('PGDATABASE', 'pasteleria_db'),
         'USER': os.environ.get('PGUSER', 'pasteleria_user'),
         'PASSWORD': os.environ.get('PGPASSWORD', 'Foderingham507'),
@@ -98,6 +93,11 @@ DATABASES = {
         'PORT': os.environ.get('PGPORT', '5432'),
     }
 }
+
+# Si Railway nos da DATABASE_URL, usamos eso
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
+    DATABASES['default'] = dj_database_url.parse(DATABASE_URL, conn_max_age=600)
 
 
 
