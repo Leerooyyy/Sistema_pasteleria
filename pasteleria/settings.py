@@ -89,9 +89,11 @@ WSGI_APPLICATION = 'pasteleria.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+
+        # En Render usará las variables de entorno PG*, en local usará los defaults
         'NAME': os.environ.get('PGDATABASE', 'pasteleria_db'),
         'USER': os.environ.get('PGUSER', 'pasteleria_user'),
-        'PASSWORD': os.environ.get('PGPASSWORD', 'TU_PASSWORD_LOCAL'),
+        'PASSWORD': os.environ.get('PGPASSWORD', 'Foderingham507'),
         'HOST': os.environ.get('PGHOST', 'localhost'),
         'PORT': os.environ.get('PGPORT', '5432'),
     }
