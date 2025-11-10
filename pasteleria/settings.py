@@ -35,6 +35,11 @@ ALLOWED_HOSTS = [
     'sistemapasteleria-production.up.railway.app',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://sistemapasteleria-production.up.railway.app",
+    
+]
+
 
 # Application definition
 
