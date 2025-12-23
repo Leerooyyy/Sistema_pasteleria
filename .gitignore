@@ -1,0 +1,35 @@
+# ======================
+# Python / Django
+# ======================
+__pycache__/
+*.py[cod]
+*.log
+*.sqlite3
+db.sqlite3
+
+# ======================
+# Virtual Environments
+# ======================
+venv/
+.venv/
+env/
+
+# ======================
+# Environment variables
+# ======================
+.env
+.env.*
+
+# ======================
+# Django static / media
+# ======================
+staticfiles/
+media/
+
+# ======================
+# IDEs / OS
+# ======================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,55 @@
+:root{
+  --bg-1: #ffe4e1;     /* rosa suave */
+  --bg-2: #fffaf0;     /* crema */
+  --primary: #ff5c8a;  /* rosa */
+  --primary-2: #ff8fb3;
+  --accent: #4a7dff;   /* azul */
+  --accent-2: #7aa8ff;
+  --warn: #ff9f43;     /* naranja */
+  --warn-2: #ffc37a;
+
+  --text: #3b2f2f;
+  --muted: #6b7280;
+
+  --card: #ffffff;
+  --shadow: 0 8px 20px rgba(0,0,0,.08);
+  --radius: 16px;
+}
+
+body{
+  background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  color: var(--text);
+}
+
+/* navbar */
+.topbar{
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.brand{ font-weight: 800; color: var(--primary); }
+
+/* cards / panel */
+.panel{
+  background: var(--card);
+  border: 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* botones */
+.btn-primary{
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.btn-primary:hover{
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+}
+
+/* inputs */
+.form-control, .form-select{
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.12);
+}
