@@ -10,7 +10,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get(
     "SECRET_KEY",
     "django-insecure-lhzs2_q&+w!yi1o1a)7hde_=i2*u7+9k8m3%qwy7l+2$2#%=5*"
+
 )
+import os
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "unsafe-secret-key")
 
 # DEBUG: por defecto True en local, pero en nube deberías poner DEBUG=False
 DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
